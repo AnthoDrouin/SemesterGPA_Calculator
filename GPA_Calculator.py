@@ -1,8 +1,7 @@
 import itertools
+from typing import *
 
 import numpy as np
-from itertools import permutations
-from typing import *
 
 
 class Semester:
@@ -18,10 +17,10 @@ class Semester:
 		"""
 		self.semester_completed.append(prev_semester)
 
-	def get_semester(self):
+	def get_semester(self) -> List[Tuple[float, float]]:
 		return self.semester_completed
 
-	def get_gpa(self):
+	def get_gpa(self) -> float:
 		gpa, credit = zip(*self.semester_completed)
 		return round(np.average(gpa, weights=credit), 2)
 
@@ -33,7 +32,7 @@ class Semester:
 		"""
 		num_course = len(current_semester)
 		pass_fail_list = [
-			[0]*num_course for _ in range(num_course)
+			[0] * num_course for _ in range(num_course)
 		]
 		for idx, course_list in enumerate(pass_fail_list):
 			pass_fail_list[idx][idx] = 1
@@ -47,7 +46,6 @@ class Semester:
 		for gpa_prev, credit_prev in self.semester_completed:
 			numerator += gpa_prev * credit_prev
 			denominator += credit_prev
-
 
 		best_gpa = 0
 		best_possibility = None
@@ -88,8 +86,6 @@ class Semester:
 			print(f"Keep: {keep_course}")
 		print("---------------------------------")
 
-
-
 	def format_best_decision(self, decision: Optional[np.ndarray]) -> Tuple[List, List]:
 		"""
 		:param decision: Tuple of format (GPA, credits)
@@ -107,8 +103,6 @@ class Semester:
 		return pass_class, keep_class
 
 
-
-
 if __name__ == '__main__':
 	# When creating a semester -> (GPA for this semester, credit of this semester)
 	My_semester = Semester()
@@ -118,11 +112,11 @@ if __name__ == '__main__':
 
 	# When creating a current semester -> {course_name: (GPA for this course, credits for this course)}
 	current_semester = {
-		"Design II" : (2.67, 4),
+		"Design II": (2.67, 4),
 		"TPOP": (4, 3),
 		"Quantique": (2.33, 3),
 		"MecFlu": (4.33, 3),
-		"SST" : (3.67, 1),
+		"SST": (3.67, 1),
 		"Optique": (3, 3),
 	}
 	My_semester.optimize_gpa(current_semester)
