@@ -110,13 +110,13 @@ class Semester:
 
 
 if __name__ == '__main__':
-
+	# When creating a semester -> (GPA for this semester, credit of this semester)
 	My_semester = Semester()
 	My_semester.append((2.67, 15))
 	My_semester.append((3.1, 15))
 	My_semester.append((3.4, 15))
 
-
+	# When creating a current semester -> {course_name: (GPA for this course, credits for this course)}
 	current_semester = {
 		"Design II" : (2.67, 4),
 		"TPOP": (4, 3),
