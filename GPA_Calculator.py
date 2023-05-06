@@ -112,11 +112,11 @@ if __name__ == '__main__':
 
 	# When creating a current semester -> {course_name: (GPA for this course, credits for this course)}
 	current_semester = {
-		"Design II": (2.67, 4),
-		"TPOP": (4, 3),
-		"Quantique": (2.33, 3),
-		"MecFlu": (4.33, 3),
-		"SST": (3.67, 1),
-		"Optique": (3, 3),
+		"PHY1": (2.67, 4),
+		"PHY2": (4, 3),
+		"PHY3": (2.33, 3),
+		"PHY4": (4.33, 3),
+		"PHY5": (3.67, 1),
+		"PHY6": (3, 3),
 	}
 	My_semester.optimize_gpa(current_semester)
